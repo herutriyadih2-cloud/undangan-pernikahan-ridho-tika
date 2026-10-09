@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan — Ridho Pangestu &amp; Kartika Pangahesti</title>
-  <meta name="description" content="Undangan digital pernikahan Ridho Pangestu &amp; Kartika Pangahesti" />
+  <title>Undangan Pernikahan — Ridho Pangestu &amp; Kartika Panghiasti</title>
+  <meta name="description" content="Undangan digital pernikahan Ridho Pangestu &amp; Kartika Panghiasti" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -252,6 +252,31 @@
     .gallery-item:hover .gallery-overlay {
       opacity: 1;
     }
+
+    /* Timeline */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(212, 175, 55, 0.3);
+      transform: translateX(-50%);
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #d4af37;
+      border: 3px solid #1a0505;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @media (max-width: 768px) {
+      .timeline-line { left: 24px; }
+      .timeline-dot { left: 24px; }
+    }
   </style>
 </head>
 <body class="bg-jawa-black text-gold-100 antialiased" style="background-image: linear-gradient(rgba(10,8,8,0.45), rgba(10,8,8,0.65)), url('assets/prewedding-3.jpg'); background-size: cover; background-position: center 20%; background-attachment: fixed;">
@@ -307,14 +332,18 @@
   <div class="batik-ornament bg-jawa-black/75"></div>
 
   <!-- ========== PEMBUKA ========== -->
-  <section class="py-20 px-6 text-center bg-jawa-black/75 backdrop-blur-sm">
-    <div class="max-w-2xl mx-auto fade-in">
-      <p class="font-serif text-3xl md:text-4xl text-gold-600 mb-6">بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ</p>
-      <p class="text-gold-200 leading-relaxed mb-4">
+  <section class="relative py-24 px-6 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="assets/prewedding.jpg" alt="Background pembuka" class="w-full h-full object-cover object-top" />
+      <div class="absolute inset-0 bg-jawa-black/80"></div>
+    </div>
+    <div class="relative z-10 max-w-2xl mx-auto fade-in">
+      <p class="text-gold-300 tracking-[0.25em] uppercase text-xs mb-6">Dengan hormat kami mengundang</p>
+      <p class="font-serif text-3xl md:text-4xl leading-relaxed text-gold-100 mb-6">
         "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri,
         supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."
       </p>
-      <p class="text-gold-600 font-serif italic">— QS. Ar-Rum: 21 —</p>
+      <p class="text-gold-500 font-serif italic text-lg">— QS. Ar-Rum: 21 —</p>
     </div>
   </section>
 
@@ -346,16 +375,35 @@
           <div class="flip-card w-48 h-48 mx-auto mb-6" id="flipFemale">
             <div class="flip-inner relative w-full h-full">
               <div class="flip-front absolute inset-0 rounded-full overflow-hidden border-4 border-gold-400 shadow-xl bg-jawa-maroonDark">
-                <img src="assets/placeholder-female.jpg" alt="Foto Kartika Pangahesti" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/7b1f1f/ffffff?text=Kartika%20Pangahesti'" />
+                <img src="assets/placeholder-female.jpg" alt="Foto Kartika Panghiasti" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/7b1f1f/ffffff?text=Kartika%20Panghiasti'" />
               </div>
               <div class="flip-back absolute inset-0 rounded-full overflow-hidden border-4 border-gold-400 shadow-xl bg-gold-600 flex items-center justify-center">
                 <span class="font-script text-4xl text-white">Tika</span>
               </div>
             </div>
           </div>
-          <h3 class="font-script text-4xl md:text-5xl text-gold-600 mb-1">Kartika Pangahesti</h3>
+          <h3 class="font-script text-4xl md:text-5xl text-gold-600 mb-1">Kartika Panghiasti</h3>
           <p class="text-gold-200 font-semibold mt-3">Putri bungsu dari</p>
           <p class="text-gold-100">Bapak Pian Susandi (Phang Jan Liong) &amp; Ibu Ida Ritawati</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TURUT MENGUNDANG ========== -->
+  <section class="py-20 px-6 bg-jawa-black/75 backdrop-blur-sm border-t border-gold-500/10">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-cinzel text-2xl md:text-3xl text-gold-100 ornament mb-10 fade-in">Turut Mengundang</h2>
+      <div class="grid md:grid-cols-2 gap-8 text-gold-100 fade-in">
+        <div>
+          <p class="text-gold-300 font-semibold mb-2">Keluarga Mempelai Pria</p>
+          <p>Bapak Muhajirin & Ibu Umi Kalsum</p>
+          <p class="text-gold-200/70 text-sm mt-1">Beserta keluarga besar</p>
+        </div>
+        <div>
+          <p class="text-gold-300 font-semibold mb-2">Keluarga Mempelai Wanita</p>
+          <p>Bapak Pian Susandi (Phang Jan Liong) & Ibu Ida Ritawati</p>
+          <p class="text-gold-200/70 text-sm mt-1">Beserta keluarga besar</p>
         </div>
       </div>
     </div>
@@ -413,6 +461,58 @@
           <div class="bg-jawa-maroonDark border border-gold-500/30 rounded-xl px-6 py-4 min-w-[80px]">
             <div id="seconds" class="text-3xl md:text-4xl font-bold text-gold-300">0</div>
             <div class="text-sm text-gold-200">Detik</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simpan ke Kalender -->
+      <div class="mt-10 fade-in">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Ridho+Pangestu+dan+Kartika+Panghiasti&dates=20270103T050000Z/20270103T120000Z&details=Akad+nikah+dan+resepsi+pernikahan+Ridho+Pangestu+dan+Kartika+Panghiasti&location=Kediaman+Mempelai+Wanita,+Pontianak" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-jawa-black hover:bg-jawa-charcoal text-gold-100 border border-gold-500 px-8 py-3 rounded-full transition">
+          <i class="fa-regular fa-calendar-check"></i> Simpan ke Google Calendar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PERJALANAN CINTA ========== -->
+  <section class="py-20 px-6 bg-jawa-black/75 backdrop-blur-sm relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: url('assets/batik-jawa.jpg'); background-size: 280px;"></div>
+    <div class="relative max-w-4xl mx-auto">
+      <h2 class="font-cinzel text-3xl md:text-4xl text-gold-100 ornament text-center mb-16 fade-in">Perjalanan Cinta</h2>
+      <div class="relative">
+        <div class="timeline-line fade-in"></div>
+        <div class="space-y-14">
+          <div class="relative fade-in">
+            <div class="timeline-dot" style="top: 6px"></div>
+            <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-12">
+              <span class="text-gold-500 font-cinzel font-semibold">Juli 2021</span>
+              <h4 class="font-script text-3xl text-gold-100 mt-1">Pertama Bertemu</h4>
+              <p class="text-gold-200/80 text-sm mt-2">Takdir mempertemukan kami di momen yang tak terduga.</p>
+            </div>
+          </div>
+          <div class="relative fade-in">
+            <div class="timeline-dot" style="top: 6px"></div>
+            <div class="md:w-1/2 md:pl-12 md:ml-auto ml-12">
+              <span class="text-gold-500 font-cinzel font-semibold">2023</span>
+              <h4 class="font-script text-3xl text-gold-100 mt-1">Mengenal Lebih Dekat</h4>
+              <p class="text-gold-200/80 text-sm mt-2">Waktu mengajarkan kami arti saling melengkapi.</p>
+            </div>
+          </div>
+          <div class="relative fade-in">
+            <div class="timeline-dot" style="top: 6px"></div>
+            <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-12">
+              <span class="text-gold-500 font-cinzel font-semibold">2026</span>
+              <h4 class="font-script text-3xl text-gold-100 mt-1">Lamaran</h4>
+              <p class="text-gold-200/80 text-sm mt-2">Dengan restu kedua keluarga, kami memutuskan melangkah bersama.</p>
+            </div>
+          </div>
+          <div class="relative fade-in">
+            <div class="timeline-dot" style="top: 6px"></div>
+            <div class="md:w-1/2 md:pl-12 md:ml-auto ml-12">
+              <span class="text-gold-500 font-cinzel font-semibold">03 Januari 2027</span>
+              <h4 class="font-script text-3xl text-gold-100 mt-1">Menikah</h4>
+              <p class="text-gold-200/80 text-sm mt-2">Hari bahagia yang kami nantikan, insya Allah.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -517,7 +617,7 @@
             <h4 class="font-bold text-gold-100">Andi &amp; Rina</h4>
             <span class="text-xs bg-gold-100 text-gold-700 px-3 py-1 rounded-full">Hadir</span>
           </div>
-          <p class="text-gold-200">Selamat ya Ridho &amp; Kartika Pangahesti! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. 🎉</p>
+          <p class="text-gold-200">Selamat ya Ridho &amp; Kartika Panghiasti! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. 🎉</p>
         </div>
       </div>
     </div>
@@ -583,13 +683,13 @@
         Kagem doa lan restu saking kulawarga ugi konco-konco sedaya, kami aturaken matur nuwun sanget.
         Mugi-mugi Gusti Allah SWT tansah paring ridho lan berkah wonten ing pernikahan punika.
       </p>
-      <p class="font-cinzel text-2xl text-gold-200">Ridho Pangestu &amp; Kartika Pangahesti</p>
+      <p class="font-cinzel text-2xl text-gold-200">Ridho Pangestu &amp; Kartika Panghiasti</p>
     </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
   <footer class="bg-jawa-black/75 border-t border-gold-700 text-gold-100/50 text-center py-6 text-sm">
-    <p>&copy; 2027 Ridho Pangestu &amp; Kartika Pangahesti. Dibuat dengan ❤️</p>
+    <p>&copy; 2027 Ridho Pangestu &amp; Kartika Panghiasti. Dibuat dengan ❤️</p>
   </footer>
 
   <!-- ========== SCRIPTS ========== -->
@@ -679,7 +779,7 @@
 
     // 1. TYPEWRITER EFFECT untuk nama di cover
     const typewriterEl = document.getElementById('typewriterName');
-    const fullName = 'Ridho Pangestu & Kartika Pangahesti';
+    const fullName = 'Ridho Pangestu & Kartika Panghiasti';
     let typeIndex = 0;
     function typeWriter() {
       if (typeIndex < fullName.length) {
