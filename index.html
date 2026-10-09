@@ -294,9 +294,9 @@
     </button>
   </div>
 
-  <!-- ========== HERO / COVER ========== -->
-  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-end overflow-hidden pb-28 md:pb-36">
-    <div class="absolute inset-0 bg-gradient-to-t from-jawa-black via-jawa-black/40 to-transparent"></div>
+  <!-- ========== COVER ========== -->
+  <section id="cover" class="fixed inset-0 z-40 flex flex-col items-center justify-end overflow-hidden pb-24 md:pb-32 transition-transform duration-1000 ease-in-out" style="background-image: linear-gradient(rgba(10,8,8,0.45), rgba(10,8,8,0.85)), url('assets/prewedding-3.jpg'); background-size: cover; background-position: center 20%;">
+    <div class="absolute inset-0 bg-gradient-to-t from-jawa-black via-jawa-black/50 to-transparent"></div>
     <canvas id="particleCanvas" class="absolute inset-0 z-0 pointer-events-none"></canvas>
 
     <div class="relative z-10 text-center px-6 max-w-3xl w-full">
@@ -317,19 +317,14 @@
         <p id="guestName" class="font-cinzel text-xl md:text-2xl text-gold-100 font-semibold"></p>
       </div>
 
-      <a href="#acara" id="openInvite" class="inline-block border border-gold-400 text-gold-100 px-8 py-3 rounded-full hover:bg-gold-500 hover:text-jawa-black hover:border-gold-500 transition duration-300 fade-in" style="transition-delay: 0.3s">
-        Buka Undangan
-      </a>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gold-200">
-      <i class="fa-solid fa-chevron-down"></i>
+      <button id="openInvite" class="inline-flex items-center gap-2 bg-gold-500/90 hover:bg-gold-400 text-jawa-black font-bold px-8 py-3 rounded-full transition-all duration-300 fade-in" style="transition-delay: 0.3s">
+        <i class="fa-regular fa-envelope-open"></i> Buka Undangan
+      </button>
     </div>
   </section>
 
-  <!-- Ornamen batik pembatas -->
-  <div class="batik-ornament bg-jawa-black/75"></div>
+  <!-- MAIN CONTENT -->
+  <main id="mainContent" class="relative z-10 opacity-0 transition-opacity duration-1000">
 
   <!-- ========== PEMBUKA ========== -->
   <section class="relative py-24 px-6 text-center overflow-hidden">
@@ -475,9 +470,8 @@
   </section>
 
   <!-- ========== PERJALANAN CINTA ========== -->
-  <section class="py-20 px-6 bg-jawa-black/75 backdrop-blur-sm relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5" style="background-image: url('assets/batik-jawa.jpg'); background-size: 280px;"></div>
-    <div class="relative max-w-4xl mx-auto">
+  <section class="py-20 px-6 bg-jawa-black/75 backdrop-blur-sm">
+    <div class="max-w-4xl mx-auto">
       <h2 class="font-cinzel text-3xl md:text-4xl text-gold-100 ornament text-center mb-16 fade-in">Perjalanan Cinta</h2>
       <div class="relative">
         <div class="timeline-line fade-in"></div>
@@ -692,6 +686,8 @@
     <p>&copy; 2027 Ridho Pangestu &amp; Kartika Panghiasti. Dibuat dengan ❤️</p>
   </footer>
 
+  </main>
+
   <!-- ========== SCRIPTS ========== -->
   <script>
     // Animasi fade-in saat scroll
@@ -793,12 +789,13 @@
     typewriterEl.classList.add('typewriter');
     setTimeout(typeWriter, 800);
 
-    // 2. CONFETTI saat tombol "Buka Undangan" diklik
+    // 2. BUKA UNDANGAN — slide up cover + fade in content
     const openInviteBtn = document.getElementById('openInvite');
-    openInviteBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    const coverEl = document.getElementById('cover');
+    const mainContent = document.getElementById('mainContent');
+    openInviteBtn.addEventListener('click', function() {
+      coverEl.style.transform = 'translateY(-100%)';
+      mainContent.classList.remove('opacity-0');
 
       confetti({
         particleCount: 150,
@@ -808,9 +805,16 @@
         disableForReducedMotion: true
       });
 
-      // Play music juga kalau ada
+      // Fade in music
       if (bgMusic.paused && bgMusic.querySelector('source').src) {
-        bgMusic.play().catch(() => {});
+        bgMusic.volume = 0;
+        bgMusic.play().then(() => {
+          let vol = 0;
+          const fade = setInterval(() => {
+            if (vol < 0.5) { vol += 0.02; bgMusic.volume = Math.min(vol, 0.5); }
+            else { clearInterval(fade); }
+          }, 100);
+        }).catch(() => {});
       }
     });
 
